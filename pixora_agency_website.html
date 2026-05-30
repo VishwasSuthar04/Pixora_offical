@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIXORA — Creative Media Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lime: #E8F87C;
+    --dark: #2A2A2A;
+    --darker: #1E1E1E;
+    --darkest: #161616;
+    --gray: #888;
+    --light-gray: #3A3A3A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--darkest); color: #fff; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(22,22,22,0.95);
+    border-bottom: 1px solid #2e2e2e;
+    backdrop-filter: blur(10px);
+  }
+  .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--lime); letter-spacing: 2px; }
+  .logo-sub { font-size: 9px; letter-spacing: 4px; color: var(--gray); text-transform: uppercase; }
+  nav ul { display: flex; gap: 2.5rem; list-style: none; }
+  nav a { color: #ccc; text-decoration: none; font-size: 13px; letter-spacing: 1px; transition: color 0.2s; }
+  nav a:hover { color: var(--lime); }
+  .nav-cta {
+    background: var(--lime); color: var(--darkest); padding: 0.5rem 1.4rem;
+    border-radius: 2px; font-size: 13px; font-weight: 500; text-decoration: none; letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; color: var(--darkest); }
+
+  .hero {
+    min-height: 92vh; display: flex; flex-direction: column;
+    justify-content: center; padding: 0 4rem;
+    background: var(--darkest);
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
+    background-image: linear-gradient(#E8F87C 1px, transparent 1px), linear-gradient(90deg, #E8F87C 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--lime); margin-bottom: 1.5rem;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--lime); }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 0.9; color: #fff; letter-spacing: 2px; margin-bottom: 1.5rem;
+  }
+  h1 span { color: var(--lime); }
+  .hero-desc {
+    max-width: 500px; color: #999; font-size: 16px; line-height: 1.8; margin-bottom: 3rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    background: var(--lime); color: var(--darkest); padding: 0.9rem 2.5rem;
+    font-weight: 500; border: none; cursor: pointer; font-size: 14px; letter-spacing: 0.5px;
+    transition: opacity 0.2s; text-decoration: none;
+  }
+  .btn-secondary {
+    border: 1px solid #444; color: #ccc; padding: 0.9rem 2.5rem;
+    font-size: 14px; background: transparent; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    text-decoration: none;
+  }
+  .btn-secondary:hover { border-color: var(--lime); color: var(--lime); }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: #555; font-size: 11px; letter-spacing: 2px;
+  }
+  .scroll-line { width: 1px; height: 50px; background: linear-gradient(#555, transparent); }
+
+  section { padding: 6rem 4rem; }
+  .section-tag {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--lime); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 1px; margin-bottom: 1rem;
+  }
+
+  /* About */
+  #about { background: var(--darker); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .stat-box { border: 1px solid #2e2e2e; padding: 1.5rem; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--lime); }
+  .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; }
+  .about-text { color: #aaa; line-height: 1.9; font-size: 15px; }
+
+  /* Services */
+  #services { background: var(--darkest); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 3rem; background: #2e2e2e; }
+  .service-card {
+    background: var(--darkest); padding: 2.5rem; position: relative; overflow: hidden;
+    transition: background 0.3s; cursor: default;
+  }
+  .service-card:hover { background: #1c1c1c; }
+  .service-card:hover .service-icon { color: var(--lime); }
+  .service-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: #2a2a2a; margin-bottom: 1rem; }
+  .service-icon { font-size: 2rem; margin-bottom: 1rem; transition: color 0.3s; }
+  .service-title { font-size: 18px; font-weight: 500; margin-bottom: 0.8rem; }
+  .service-desc { color: #888; font-size: 13px; line-height: 1.8; }
+  .service-tag {
+    display: inline-block; margin-top: 1.5rem; font-size: 11px; letter-spacing: 2px;
+    color: var(--lime); text-transform: uppercase; border-bottom: 1px solid var(--lime); padding-bottom: 2px;
+  }
+
+  /* Process */
+  #process { background: var(--darker); }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 3rem; position: relative; }
+  .process-steps::before {
+    content: ''; position: absolute; top: 2rem; left: 10%; right: 10%;
+    height: 1px; background: linear-gradient(90deg, transparent, var(--lime), transparent);
+  }
+  .step { padding: 1.5rem; text-align: center; }
+  .step-circle {
+    width: 60px; height: 60px; border-radius: 50%; border: 1px solid #333;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--lime);
+    background: var(--darker); position: relative; z-index: 1;
+  }
+  .step-title { font-size: 14px; font-weight: 500; margin-bottom: 0.5rem; }
+  .step-desc { font-size: 12px; color: #666; line-height: 1.7; }
+
+  /* Portfolio teaser */
+  #work { background: var(--darkest); }
+  .work-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+  .work-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 250px 250px; gap: 4px; }
+  .work-item {
+    overflow: hidden; position: relative; cursor: pointer;
+    background: var(--dark);
+  }
+  .work-item:first-child { grid-row: 1 / 3; }
+  .work-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: flex-end; padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+    transition: background 0.3s;
+  }
+  .work-item:hover .work-inner { background: linear-gradient(to top, rgba(232,248,124,0.15) 0%, transparent 60%); }
+  .work-label { font-size: 13px; font-weight: 500; }
+  .work-cat { font-size: 11px; color: var(--lime); letter-spacing: 1px; text-transform: uppercase; }
+  .work-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .work-bg svg { opacity: 0.08; }
+
+  /* CTA */
+  #contact {
+    background: var(--lime); padding: 6rem 4rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 3rem;
+  }
+  #contact h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 5rem); color: var(--darkest); letter-spacing: 2px; line-height: 1;
+  }
+  #contact p { color: #555; font-size: 15px; margin-top: 0.8rem; }
+  .cta-right { display: flex; flex-direction: column; gap: 1rem; min-width: 280px; }
+  .cta-input {
+    padding: 0.9rem 1.2rem; background: rgba(22,22,22,0.15); border: 1px solid rgba(22,22,22,0.3);
+    font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--darkest);
+    outline: none; width: 100%;
+  }
+  .cta-input::placeholder { color: #777; }
+  .btn-dark {
+    background: var(--darkest); color: var(--lime); padding: 0.9rem;
+    font-size: 14px; font-weight: 500; border: none; cursor: pointer;
+    letter-spacing: 1px; text-align: center; transition: opacity 0.2s;
+  }
+  .btn-dark:hover { opacity: 0.85; }
+
+  footer {
+    background: var(--darkest); border-top: 1px solid #222;
+    padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 12px; color: #555; }
+  .social-links { display: flex; gap: 1.5rem; }
+  .social-links a { font-size: 12px; color: #555; text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
+  .social-links a:hover { color: var(--lime); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <div class="logo-text">PIXORA</div>
+    <div class="logo-sub">Creative Media Agency</div>
+  </div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-tag">Creative Media Agency — Pakistan</div>
+  <h1>WE CRAFT<br><span>VISUAL</span><br>STORIES</h1>
+  <p class="hero-desc">Pixora Studio transforms your brand through cinematic videography, scroll-stopping reels, and premium photography that makes people stop and stare.</p>
+  <div class="hero-btns">
+    <a href="#services" class="btn-primary">Our Services</a>
+    <a href="#work" class="btn-secondary">View Work</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-tag">Who We Are</div>
+      <h2 class="section-title">VISUAL IMPACT,<br>REAL RESULTS</h2>
+      <p class="about-text">Pixora Studio is a Karachi-based creative media agency obsessed with one thing — making your brand impossible to ignore. We combine storytelling craft with technical precision to deliver content that converts viewers into customers.</p>
+      <p class="about-text" style="margin-top:1rem;">Whether you're a startup or an established brand, we bring the same cinematic energy to every project. Your story, told with intention.</p>
+    </div>
+    <div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Brands Served</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years Active</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">200+</div>
+          <div class="stat-label">Reels Created</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Client Focused</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-tag">What We Do</div>
+  <h2 class="section-title">OUR SERVICES</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">🎬</div>
+      <div class="service-title">Brand Videography</div>
+      <p class="service-desc">Cinematic brand films, product launches, corporate videos, and documentary-style storytelling that defines your brand identity.</p>
+      <span class="service-tag">Learn More</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">📱</div>
+      <div class="service-title">Reels & Short Content</div>
+      <p class="service-desc">Viral-worthy Instagram and TikTok reels engineered for maximum engagement. Fast-paced edits, trending formats, custom motion graphics.</p>
+      <span class="service-tag">Learn More</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">📸</div>
+      <div class="service-title">Brand Photography</div>
+      <p class="service-desc">Product photography, lifestyle shoots, and editorial campaigns that elevate how your brand is perceived across every platform.</p>
+      <span class="service-tag">Learn More</span>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="work-header">
+    <div>
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title">SELECTED WORK</h2>
+    </div>
+    <a href="#contact" class="btn-secondary" style="padding: 0.7rem 1.8rem; font-size:13px;">View All Projects</a>
+  </div>
+  <div class="work-grid">
+    <div class="work-item" style="background: #1a1a1a;">
+      <div class="work-bg">
+        <svg width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="none" stroke="#E8F87C" stroke-width="2"/><circle cx="100" cy="100" r="50" fill="none" stroke="#E8F87C" stroke-width="1"/><line x1="20" y1="100" x2="180" y2="100" stroke="#E8F87C" stroke-width="1"/><polygon points="85,75 125,100 85,125" fill="#E8F87C"/></svg>
+      </div>
+      <div class="work-inner">
+        <div><div class="work-cat">Brand Film</div><div class="work-label">Fashion Brand Campaign 2024</div></div>
+      </div>
+    </div>
+    <div class="work-item" style="background: #1c1e1a;">
+      <div class="work-bg">
+        <svg width="120" height="120" viewBox="0 0 120 120"><rect x="20" y="20" width="80" height="80" rx="4" fill="none" stroke="#E8F87C" stroke-width="2"/><rect x="35" y="35" width="50" height="50" rx="2" fill="#E8F87C" opacity="0.3"/></svg>
+      </div>
+      <div class="work-inner">
+        <div><div class="work-cat">Photography</div><div class="work-label">Product Shoot</div></div>
+      </div>
+    </div>
+    <div class="work-item" style="background: #1a1c1e;">
+      <div class="work-bg">
+        <svg width="100" height="100" viewBox="0 0 100 100"><rect x="10" y="30" width="80" height="40" rx="4" fill="none" stroke="#E8F87C" stroke-width="2"/><rect x="35" y="20" width="30" height="15" rx="2" fill="none" stroke="#E8F87C" stroke-width="1.5"/><circle cx="50" cy="50" r="12" fill="none" stroke="#E8F87C" stroke-width="1.5"/></svg>
+      </div>
+      <div class="work-inner">
+        <div><div class="work-cat">Reels</div><div class="work-label">F&B Brand Content</div></div>
+      </div>
+    </div>
+    <div class="work-item" style="background: #1e1a1a;">
+      <div class="work-bg">
+        <svg width="100" height="100" viewBox="0 0 100 100"><polygon points="50,10 90,80 10,80" fill="none" stroke="#E8F87C" stroke-width="2"/><polygon points="50,30 75,70 25,70" fill="#E8F87C" opacity="0.2"/></svg>
+      </div>
+      <div class="work-inner">
+        <div><div class="work-cat">Videography</div><div class="work-label">Corporate Event Coverage</div></div>
+      </div>
+    </div>
+    <div class="work-item" style="background: #1a1e1e;">
+      <div class="work-bg">
+        <svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#E8F87C" stroke-width="2"/><circle cx="50" cy="50" r="20" fill="#E8F87C" opacity="0.2"/><line x1="50" y1="10" x2="50" y2="90" stroke="#E8F87C" stroke-width="1" opacity="0.5"/><line x1="10" y1="50" x2="90" y2="50" stroke="#E8F87C" stroke-width="1" opacity="0.5"/></svg>
+      </div>
+      <div class="work-inner">
+        <div><div class="work-cat">Photography</div><div class="work-label">Lifestyle Campaign</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-tag">How We Work</div>
+  <h2 class="section-title">OUR PROCESS</h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-circle">01</div>
+      <div class="step-title">Discovery</div>
+      <p class="step-desc">We learn your brand, goals, and audience to shape the creative direction.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">02</div>
+      <div class="step-title">Concept</div>
+      <p class="step-desc">Mood boards, scripts, and shot plans crafted to align with your vision.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">03</div>
+      <div class="step-title">Production</div>
+      <p class="step-desc">Full-scale shoot with our professional team and equipment.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">04</div>
+      <div class="step-title">Delivery</div>
+      <p class="step-desc">Edited, color-graded, and optimized content delivered on time.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div>
+    <h2>READY TO<br>WORK WITH US?</h2>
+    <p>Let's create something remarkable together.</p>
+  </div>
+  <div class="cta-right">
+    <input class="cta-input" type="text" placeholder="Your Name" />
+    <input class="cta-input" type="text" placeholder="Your Email / Phone" />
+    <select class="cta-input" style="cursor:pointer;">
+      <option value="">Service Interested In...</option>
+      <option>Brand Videography</option>
+      <option>Reels & Short Content</option>
+      <option>Brand Photography</option>
+      <option>Full Package</option>
+    </select>
+    <button class="btn-dark" onclick="alert('Shukriya! Pixora team jald contact karegi.')">SEND INQUIRY →</button>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="logo-text" style="font-size:1.3rem;">PIXORA</div>
+    <p style="margin-top:4px;">© 2025 Pixora Studio. All rights reserved.</p>
+  </div>
+  <div class="social-links">
+    <a href="#">INSTAGRAM</a>
+    <a href="#">TIKTOK</a>
+    <a href="#">WHATSAPP</a>
+    <a href="#">BEHANCE</a>
+  </div>
+</footer>
+
+</body>
+</html>

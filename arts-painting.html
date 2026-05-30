@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arts & Painting — PIXORA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root { --lime: #E8F87C; --dark: #2A2A2A; --darker: #1E1E1E; --darkest: #161616; --gray: #888; --light-gray: #3A3A3A; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--darkest); color: #fff; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(22,22,22,0.97); border-bottom: 1px solid #2e2e2e; backdrop-filter: blur(10px); }
+  .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--lime); letter-spacing: 2px; text-decoration:none; }
+  .logo-sub { font-size: 9px; letter-spacing: 4px; color: var(--gray); text-transform: uppercase; }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav a { color: #ccc; text-decoration: none; font-size: 13px; letter-spacing: 1px; transition: color 0.2s; }
+  nav a:hover { color: var(--lime); }
+  .nav-cta { background: var(--lime); color: var(--darkest); padding: 0.5rem 1.4rem; border-radius: 2px; font-size: 13px; font-weight: 500; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.85; color: var(--darkest); }
+  .hero { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; padding: 0 4rem; background: var(--darkest); position: relative; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; opacity: 0.04; pointer-events: none; background-image: linear-gradient(#E8F87C 1px, transparent 1px), linear-gradient(90deg, #E8F87C 1px, transparent 1px); background-size: 60px 60px; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--lime); margin-bottom: 1.5rem; }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--lime); }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 10vw, 8rem); line-height: 0.9; color: #fff; letter-spacing: 2px; margin-bottom: 1rem; }
+  h1 span { color: var(--lime); }
+  .hero-desc { max-width: 500px; color: #999; font-size: 16px; line-height: 1.8; margin-bottom: 2rem; }
+  section { padding: 6rem 4rem; }
+  .section-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--lime); margin-bottom: 1rem; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 1px; margin-bottom: 2rem; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
+  .gallery-item { aspect-ratio: 1; background: var(--dark); overflow: hidden; position: relative; cursor: pointer; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .btn-back { display: inline-flex; align-items: center; gap: 6px; color: var(--lime); text-decoration: none; font-size: 13px; letter-spacing: 1px; margin-bottom: 2rem; transition: opacity 0.2s; }
+  .btn-back:hover { opacity: 0.75; }
+  footer { background: var(--darkest); border-top: 1px solid #222; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: #555; }
+  .social-links { display: flex; gap: 1.5rem; }
+  .social-links a { font-size: 12px; color: #555; text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
+  .social-links a:hover { color: var(--lime); }
+  @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } nav ul { display: none; } .hero, section { padding: 4rem 1.5rem; } .gallery-grid { grid-template-columns: repeat(2, 1fr); } footer { flex-direction: column; gap: 1rem; text-align: center; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <a href="index.html" class="logo-text">PIXORA</a>
+    <div class="logo-sub">Creative Media Agency</div>
+  </div>
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <a href="index.html" class="btn-back">← BACK TO HOME</a>
+  <div class="hero-tag">Photography</div>
+  <h1>ARTS &<br><span>PAINTING</span></h1>
+  <p class="hero-desc">Creative arts and painting photography capturing the beauty of artistic expression, texture, and color.</p>
+</section>
+
+<section>
+  <div class="section-tag">Gallery</div>
+  <h2 class="section-title">ARTS & PAINTING</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5549.jpg" alt="Arts 1" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5556.jpg" alt="Arts 2" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5700.jpg" alt="Arts 3" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5701.jpg" alt="Arts 4" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5702.jpg" alt="Arts 5" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5703.jpg" alt="Arts 6" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5704.jpg" alt="Arts 7" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5705.jpg" alt="Arts 8" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5706.jpg" alt="Arts 9" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5707.jpg" alt="Arts 10" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5708.jpg" alt="Arts 11" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5709.jpg" alt="Arts 12" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5710.jpg" alt="Arts 13" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5711.jpg" alt="Arts 14" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5712.jpg" alt="Arts 15" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5713.jpg" alt="Arts 16" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5714.jpg" alt="Arts 17" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5717.jpg" alt="Arts 18" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5718.jpg" alt="Arts 19" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5719.jpg" alt="Arts 20" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5720.jpg" alt="Arts 21" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5721.jpg" alt="Arts 22" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5724.jpg" alt="Arts 23" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5728.jpg" alt="Arts 24" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5729.jpg" alt="Arts 25" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5732.jpg" alt="Arts 26" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5735.jpg" alt="Arts 27" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5736.jpg" alt="Arts 28" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5737.jpg" alt="Arts 29" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5739.jpg" alt="Arts 30" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5741.jpg" alt="Arts 31" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5742.jpg" alt="Arts 32" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5743.jpg" alt="Arts 33" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5746.jpg" alt="Arts 34" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5749.jpg" alt="Arts 35" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5751.jpg" alt="Arts 36" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5752.jpg" alt="Arts 37" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5753.jpg" alt="Arts 38" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5755.jpg" alt="Arts 39" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5758.jpg" alt="Arts 40" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5759.jpg" alt="Arts 41" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5762.jpg" alt="Arts 42" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5763.jpg" alt="Arts 43" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5767.jpg" alt="Arts 44" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5768.jpg" alt="Arts 45" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5772.jpg" alt="Arts 46" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5774.jpg" alt="Arts 47" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5775.jpg" alt="Arts 48" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5776.jpg" alt="Arts 49" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5777.jpg" alt="Arts 50" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5780.jpg" alt="Arts 51" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5782.jpg" alt="Arts 52" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5784.jpg" alt="Arts 53" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5786.jpg" alt="Arts 54" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5787.jpg" alt="Arts 55" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5788.jpg" alt="Arts 56" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5793.jpg" alt="Arts 57" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5795.jpg" alt="Arts 58" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5796.jpg" alt="Arts 59" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5799.jpg" alt="Arts 60" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5802.jpg" alt="Arts 61" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5803.jpg" alt="Arts 62" loading="lazy"></div>
+    <div class="gallery-item"><img src="arts%20and%20painting/IMG_5804.jpg" alt="Arts 63" loading="lazy"></div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="logo-text" style="font-size:1.3rem;">PIXORA</div>
+    <p style="margin-top:4px;">© 2025 Pixora Studio, Karachi. All rights reserved.</p>
+  </div>
+  <div class="social-links">
+    <a href="#">INSTAGRAM</a>
+    <a href="#">TIKTOK</a>
+    <a href="#">WHATSAPP</a>
+    <a href="#">BEHANCE</a>
+  </div>
+</footer>
+
+</body>
+</html>

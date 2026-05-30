@@ -1,0 +1,22 @@
+# Large media directories - host these externally
+arts and painting/
+birthdayshoot/
+food and promotion/
+model shot/
+model vedios/
+perfumes shot/
+pizza x shot/
+productshots/
+short films/
+wedding_shot/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

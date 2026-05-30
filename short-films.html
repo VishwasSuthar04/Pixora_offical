@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Short Films — PIXORA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root { --lime: #E8F87C; --dark: #2A2A2A; --darker: #1E1E1E; --darkest: #161616; --gray: #888; --light-gray: #3A3A3A; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--darkest); color: #fff; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(22,22,22,0.97); border-bottom: 1px solid #2e2e2e; backdrop-filter: blur(10px); }
+  .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--lime); letter-spacing: 2px; text-decoration:none; }
+  .logo-sub { font-size: 9px; letter-spacing: 4px; color: var(--gray); text-transform: uppercase; }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav a { color: #ccc; text-decoration: none; font-size: 13px; letter-spacing: 1px; transition: color 0.2s; }
+  nav a:hover { color: var(--lime); }
+  .nav-cta { background: var(--lime); color: var(--darkest); padding: 0.5rem 1.4rem; border-radius: 2px; font-size: 13px; font-weight: 500; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.85; color: var(--darkest); }
+  .hero { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; padding: 0 4rem; background: var(--darkest); position: relative; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; opacity: 0.04; pointer-events: none; background-image: linear-gradient(#E8F87C 1px, transparent 1px), linear-gradient(90deg, #E8F87C 1px, transparent 1px); background-size: 60px 60px; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--lime); margin-bottom: 1.5rem; }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--lime); }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 10vw, 8rem); line-height: 0.9; color: #fff; letter-spacing: 2px; margin-bottom: 1rem; }
+  h1 span { color: var(--lime); }
+  .hero-desc { max-width: 500px; color: #999; font-size: 16px; line-height: 1.8; margin-bottom: 2rem; }
+  section { padding: 6rem 4rem; }
+  .section-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--lime); margin-bottom: 1rem; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 1px; margin-bottom: 2rem; }
+  .films-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+  .film-card { background: var(--dark); border-radius: 4px; overflow: hidden; text-decoration: none; display: block; transition: transform 0.3s; }
+  .film-card:hover { transform: translateY(-4px); }
+  .film-thumb { width: 100%; aspect-ratio: 16/9; background: var(--darker); display: flex; align-items: center; justify-content: center; position: relative; }
+  .film-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .film-play { position: absolute; width: 56px; height: 56px; background: var(--lime); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; z-index: 2; transition: opacity 0.3s; }
+  .film-play::after { content: '▶'; color: var(--darkest); font-size: 18px; margin-left: 2px; }
+  .film-info { padding: 1.5rem; }
+  .film-tag { font-size: 10px; letter-spacing: 2px; color: var(--lime); text-transform: uppercase; margin-bottom: 0.4rem; }
+  .film-title { font-size: 16px; font-weight: 500; }
+  .film-desc { font-size: 13px; color: #888; margin-top: 0.4rem; line-height: 1.6; }
+  .btn-back { display: inline-flex; align-items: center; gap: 6px; color: var(--lime); text-decoration: none; font-size: 13px; letter-spacing: 1px; margin-bottom: 2rem; transition: opacity 0.2s; }
+  .btn-back:hover { opacity: 0.75; }
+  footer { background: var(--darkest); border-top: 1px solid #222; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: #555; }
+  .social-links { display: flex; gap: 1.5rem; }
+  .social-links a { font-size: 12px; color: #555; text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
+  .social-links a:hover { color: var(--lime); }
+  @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } nav ul { display: none; } .hero, section { padding: 4rem 1.5rem; } .films-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 1rem; text-align: center; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <a href="index.html" class="logo-text">PIXORA</a>
+    <div class="logo-sub">Creative Media Agency</div>
+  </div>
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <a href="index.html" class="btn-back">← BACK TO HOME</a>
+  <div class="hero-tag">Cinematography</div>
+  <h1>SHORT<br><span>FILMS</span></h1>
+  <p class="hero-desc">Narrative short films crafted with cinematic intent — compelling scripts, professional crew, festival-worthy production value.</p>
+</section>
+
+<section>
+  <div class="section-tag">Our Work</div>
+  <h2 class="section-title">SHORT FILM PROJECTS</h2>
+  <div class="films-grid">
+    <div class="film-card">
+      <div class="film-thumb">
+        <video src="short%20films/MAM%20RIMSHA%20FINAL%20PROJECT.mp4" muted loop playsinline preload="metadata"></video>
+        <button class="film-play" onclick="this.previousElementSibling.paused ? this.previousElementSibling.play() : this.previousElementSibling.pause()"></button>
+      </div>
+      <div class="film-info">
+        <div class="film-tag">Short Film</div>
+        <div class="film-title">Mam Rimsha — Final Project</div>
+        <p class="film-desc">A narrative short film project showcasing cinematic storytelling and professional production.</p>
+      </div>
+    </div>
+    <div class="film-card">
+      <div class="film-thumb">
+        <video src="short%20films/rj%201.mp4" muted loop playsinline preload="metadata"></video>
+        <button class="film-play" onclick="this.previousElementSibling.paused ? this.previousElementSibling.play() : this.previousElementSibling.pause()"></button>
+      </div>
+      <div class="film-info">
+        <div class="film-tag">Short Film</div>
+        <div class="film-title">RJ 1</div>
+        <p class="film-desc">A compelling narrative piece with professional direction and cinematography.</p>
+      </div>
+    </div>
+    <div class="film-card">
+      <div class="film-thumb">
+        <video src="short%20films/0414(2).mp4" muted loop playsinline preload="metadata"></video>
+        <button class="film-play" onclick="this.previousElementSibling.paused ? this.previousElementSibling.play() : this.previousElementSibling.pause()"></button>
+      </div>
+      <div class="film-info">
+        <div class="film-tag">Short Film</div>
+        <div class="film-title">0414</div>
+        <p class="film-desc">A creatively directed short film with high production value.</p>
+      </div>
+    </div>
+    <div class="film-card">
+      <div class="film-thumb">
+        <video src="short%20films/0420.mp4" muted loop playsinline preload="metadata"></video>
+        <button class="film-play" onclick="this.previousElementSibling.paused ? this.previousElementSibling.play() : this.previousElementSibling.pause()"></button>
+      </div>
+      <div class="film-info">
+        <div class="film-tag">Short Film</div>
+        <div class="film-title">0420</div>
+        <p class="film-desc">A visually striking short film project.</p>
+      </div>
+    </div>
+    <div class="film-card">
+      <div class="film-thumb">
+        <video src="short%20films/zainab.mp4" muted loop playsinline preload="metadata"></video>
+        <button class="film-play" onclick="this.previousElementSibling.paused ? this.previousElementSibling.play() : this.previousElementSibling.pause()"></button>
+      </div>
+      <div class="film-info">
+        <div class="film-tag">Short Film</div>
+        <div class="film-title">Zainab</div>
+        <p class="film-desc">Character-driven narrative short film.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="logo-text" style="font-size:1.3rem;">PIXORA</div>
+    <p style="margin-top:4px;">© 2025 Pixora Studio, Karachi. All rights reserved.</p>
+  </div>
+  <div class="social-links">
+    <a href="#">INSTAGRAM</a>
+    <a href="#">TIKTOK</a>
+    <a href="#">WHATSAPP</a>
+    <a href="#">BEHANCE</a>
+  </div>
+</footer>
+
+</body>
+</html>
